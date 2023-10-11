@@ -10,17 +10,47 @@
  *
  */
 
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", { id: "sib1" }, "sib1"),
-    React.createElement("h2", { id: "sib2" }, "sib2"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", { id: "sib1" }, "sib1"),
-    React.createElement("h2", { id: "sib2" }, "sib2"),
-  ]),
-]);
+// react element
+const reactElement = React.createElement(
+  "div",
+  { id: "container" },
+  React.createElement("h1", { id: "heading" }, "React using React Element")
+);
 
-root.render(parent);
+// JSX expression for heading
+const jsxheading = (
+  <div id="container">
+    <h1 className="heading" tabIndex="2">
+      Namaste React using JSX 🚀
+    </h1>
+  </div>
+);
+
+const Title = () => {
+  return (
+    <div id="title">
+      <h1> This is my title of the page</h1>
+    </div>
+  );
+};
+
+/**
+ * Component Composition
+ * Using one componenent inside the other component
+ */
+const Heading = () => {
+  return (
+    <div id="container">
+      {Title()}
+      {jsxheading}
+      <h1> Reacting using functional component</h1>
+    </div>
+  );
+};
+
+root.render(<Heading />);
